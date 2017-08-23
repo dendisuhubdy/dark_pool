@@ -90,7 +90,7 @@ exchange_EXTERNAL_OBJECTS =
 
 exchange: CMakeFiles/exchange.dir/src/main.cpp.o
 exchange: CMakeFiles/exchange.dir/build.make
-exchange: /usr/local/lib/libboost_program_options-mt.dylib
+exchange: /usr/local/Cellar/boost/1.65.0/lib/libboost_system-mt.dylib
 exchange: CMakeFiles/exchange.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/dendisuhubdy/dev/bitwyre/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable exchange"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/exchange.dir/link.txt --verbose=$(VERBOSE)

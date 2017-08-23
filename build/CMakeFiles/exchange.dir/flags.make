@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/local/include -I/Users/dendisuhubdy/dev/bitwyre/backend/include 
+CXX_INCLUDES = -I/usr/local/Cellar/boost/1.65.0/include -I/Users/dendisuhubdy/dev/bitwyre/backend/include 
 

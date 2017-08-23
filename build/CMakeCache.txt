@@ -17,20 +17,11 @@
 //The directory containing a CMake configuration file for Boost.
 Boost_DIR:PATH=Boost_DIR-NOTFOUND
 
-//Path to a file.
-Boost_INCLUDE_DIR:PATH=/usr/local/include
+//Boost system library (debug)
+Boost_SYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/local/Cellar/boost/1.65.0/lib/libboost_system-mt.dylib
 
-//Boost library directory DEBUG
-Boost_LIBRARY_DIR_DEBUG:PATH=/usr/local/lib
-
-//Boost library directory RELEASE
-Boost_LIBRARY_DIR_RELEASE:PATH=/usr/local/lib
-
-//Boost program_options library (debug)
-Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG:FILEPATH=/usr/local/lib/libboost_program_options-mt.dylib
-
-//Boost program_options library (release)
-Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE:FILEPATH=/usr/local/lib/libboost_program_options-mt.dylib
+//Boost system library (release)
+Boost_SYSTEM_LIBRARY_RELEASE:FILEPATH=/usr/local/Cellar/boost/1.65.0/lib/libboost_system-mt.dylib
 
 //Path to a program.
 CMAKE_AR:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar
@@ -210,16 +201,10 @@ bitwyre_exchange_SOURCE_DIR:STATIC=/Users/dendisuhubdy/dev/bitwyre/backend
 
 //ADVANCED property for variable: Boost_DIR
 Boost_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_INCLUDE_DIR
-Boost_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_LIBRARY_DIR_DEBUG
-Boost_LIBRARY_DIR_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_LIBRARY_DIR_RELEASE
-Boost_LIBRARY_DIR_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG
-Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE
-Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_DEBUG
+Boost_SYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_RELEASE
+Boost_SYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
 CMAKE_AR-ADVANCED:INTERNAL=1
 //This is the directory where this CMakeCache.txt was created
@@ -350,13 +335,13 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Components requested for this build tree.
-_Boost_COMPONENTS_SEARCHED:INTERNAL=program_options
+_Boost_COMPONENTS_SEARCHED:INTERNAL=system
 //Last used Boost_INCLUDE_DIR value.
-_Boost_INCLUDE_DIR_LAST:INTERNAL=/usr/local/include
+_Boost_INCLUDE_DIR_LAST:INTERNAL=/usr/local/Cellar/boost/1.65.0/include
 //Last used Boost_LIBRARY_DIR_DEBUG value.
-_Boost_LIBRARY_DIR_DEBUG_LAST:INTERNAL=/usr/local/lib
+_Boost_LIBRARY_DIR_DEBUG_LAST:INTERNAL=/usr/local/Cellar/boost/1.65.0/lib
 //Last used Boost_LIBRARY_DIR_RELEASE value.
-_Boost_LIBRARY_DIR_RELEASE_LAST:INTERNAL=/usr/local/lib
+_Boost_LIBRARY_DIR_RELEASE_LAST:INTERNAL=/usr/local/Cellar/boost/1.65.0/lib
 //Last used Boost_NAMESPACE value.
 _Boost_NAMESPACE_LAST:INTERNAL=boost
 //Last used Boost_USE_MULTITHREADED value.

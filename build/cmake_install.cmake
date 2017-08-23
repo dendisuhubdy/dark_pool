@@ -39,6 +39,9 @@ if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMP
 file(INSTALL DESTINATION "/usr/local/bin" TYPE EXECUTABLE FILES "/Users/dendisuhubdy/dev/bitwyre/backend/build/exchange")
   if(EXISTS "$ENV{DESTDIR}/usr/local/bin/exchange" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/bin/exchange")
+    execute_process(COMMAND /usr/bin/install_name_tool
+      -delete_rpath "/usr/local/Cellar/boost/1.65.0/lib"
+      "$ENV{DESTDIR}/usr/local/bin/exchange")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" "$ENV{DESTDIR}/usr/local/bin/exchange")
     endif()

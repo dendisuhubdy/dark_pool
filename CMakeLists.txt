@@ -1,11 +1,14 @@
-cmake_minimum_required(VERSION 3.9.1)
+cmake_minimum_required(VERSION 3.8.0)
 project (bitwyre_exchange)
 set(CMAKE_BUILD_TYPE Release)
 
 set (CMAKE_CXX_STANDARD 11)
 
-FIND_PACKAGE( Boost 1.65 COMPONENTS program_options REQUIRED )
-INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
+set(Boost_INCLUDE_DIR /usr/local/Cellar/boost/1.65.0/include)
+set(Boost_LIBRARY_DIR /usr/local/Cellar/boost/1.65.0/lib)
+find_package( Boost 1.65 COMPONENTS system REQUIRED )
+include_directories( ${Boost_INCLUDE_DIR} )
+link_directories(${Boost_LIBRARY_DIR})
 
 # Bring the headers
 include_directories(include)
