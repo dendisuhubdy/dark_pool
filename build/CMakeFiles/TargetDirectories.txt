@@ -1,7 +1,0 @@
-/Users/dendisuhubdy/dev/bitwyre/backend/build/CMakeFiles/install/local.dir
-/Users/dendisuhubdy/dev/bitwyre/backend/build/CMakeFiles/install/strip.dir
-/Users/dendisuhubdy/dev/bitwyre/backend/build/CMakeFiles/install.dir
-/Users/dendisuhubdy/dev/bitwyre/backend/build/CMakeFiles/list_install_components.dir
-/Users/dendisuhubdy/dev/bitwyre/backend/build/CMakeFiles/rebuild_cache.dir
-/Users/dendisuhubdy/dev/bitwyre/backend/build/CMakeFiles/edit_cache.dir
-/Users/dendisuhubdy/dev/bitwyre/backend/build/CMakeFiles/exchange.dir
