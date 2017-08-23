@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/dendisuhubdy/dev/bitwyre/backend-exchange/include 
+CXX_INCLUDES = -I/usr/local/include -I/Users/dendisuhubdy/dev/bitwyre/backend/include 
 

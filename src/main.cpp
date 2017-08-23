@@ -1,6 +1,3 @@
-
-//STL headers here
-#include <iostream>
 #include <cstdlib>
 #include <deque>
 #include <iostream>
@@ -8,18 +5,13 @@
 #include <memory>
 #include <set>
 #include <utility>
-
-// Boost headers here
 #include <boost/asio.hpp>
 
-// exchange headers here
-#include "chat_participant.hpp"
-#include "chat_room.hpp"
 #include "chat_server.hpp"
-#include "chat_session.hpp"
-#include "chat_message.hpp"
 
 using boost::asio::ip::tcp;
+
+typedef std::deque<chat_message> chat_message_queue;
 
 int main(int argc, char* argv[])
 {

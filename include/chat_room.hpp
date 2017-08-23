@@ -1,13 +1,6 @@
+#include "precompiled.h"
 
-// exchange headers here
 #include "chat_participant.hpp"
-#include "chat_server.hpp"
-#include "chat_session.hpp"
-#include "chat_message.hpp"
-
-using boost::asio::ip::tcp;
-
-typedef std::deque<chat_message> chat_message_queue;
 
 class chat_room
 {

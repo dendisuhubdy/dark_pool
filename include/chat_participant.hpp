@@ -1,11 +1,4 @@
-
-// exchange headers here
-#include "chat_room.hpp"
-#include "chat_server.hpp"
-#include "chat_session.hpp"
-#include "chat_message.hpp"
-
-typedef std::deque<chat_message> chat_message_queue;
+#include "precompiled.h"
 
 class chat_participant
 {

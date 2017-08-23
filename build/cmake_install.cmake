@@ -1,4 +1,4 @@
-# Install script for directory: /Users/dendisuhubdy/dev/bitwyre/backend-exchange
+# Install script for directory: /Users/dendisuhubdy/dev/bitwyre/backend
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -36,7 +36,7 @@ if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMP
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/bin" TYPE EXECUTABLE FILES "/Users/dendisuhubdy/dev/bitwyre/backend-exchange/build/exchange")
+file(INSTALL DESTINATION "/usr/local/bin" TYPE EXECUTABLE FILES "/Users/dendisuhubdy/dev/bitwyre/backend/build/exchange")
   if(EXISTS "$ENV{DESTDIR}/usr/local/bin/exchange" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/bin/exchange")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -53,5 +53,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/dendisuhubdy/dev/bitwyre/backend-exchange/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/dendisuhubdy/dev/bitwyre/backend/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
