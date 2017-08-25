@@ -37,5 +37,6 @@
 
 # main executable
 build/exchange
+build/*
 
 # End of https://www.gitignore.io/api/c++

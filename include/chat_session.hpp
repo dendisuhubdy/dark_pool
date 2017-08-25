@@ -1,5 +1,4 @@
 #include "precompiled.h"
-
 #include "chat_room.hpp"
 
 class chat_session
