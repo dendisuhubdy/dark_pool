@@ -12,7 +12,7 @@ find_package( Boost 1.65 COMPONENTS system REQUIRED )
 
 include_directories( 
 		${Boost_INCLUDE_DIR}
-		${BITWYRE_SOURCE_DIR}/include/quickfix/
+		${BITWYRE_SOURCE_DIR}/include
 )
 
 link_directories(
@@ -30,12 +30,13 @@ set(
 add_executable(
     ordermatch
     ${BITWYRE_SOURCE_DIR}/src/ordermatch/ordermatch.cpp
+    ${BITWYRE_SOURCE_DIR}/src/ordermatch/Market.cpp
+    ${BITWYRE_SOURCE_DIR}/src/ordermatch/Application.cpp
 )
 
 TARGET_LINK_LIBRARIES(
-    ordermatch 
-    LINK_PUBLIC 
-    ${Boost_LIBRARIES}
+    ordermatch
+    ${Boost_LIBRARY_DIR}
     -lquickfix
 )
 
