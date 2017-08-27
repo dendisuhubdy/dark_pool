@@ -1,64 +1,37 @@
-cmake_minimum_required(VERSION 2.8.0)
+cmake_minimum_required(VERSION 3.8.0)
 
-project(BITWYRE)
+project (BITWYRE)
 
-ADD_SUBDIRECTORY(lib)
+set(CMAKE_BUILD_TYPE Release)
+set (CMAKE_CXX_STANDARD 11)
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    add_definitions(
-        -std=c++11
-        -stdlib=libc++
-        -g
-        -O0
-        -D_LARGEFILE_SOURCE
-        -D_FILE_OFFSET_BITS=64
-    )
+set(Boost_INCLUDE_DIR /usr/local/Cellar/boost/1.65.0/include)
+set(Boost_LIBRARY_DIR /usr/local/Cellar/boost/1.65.0/lib)
 
-    set(
-        CMAKE_CXX_LINK_FLAGS 
-        "${CMAKE_CXX_LINK_FLAGS} -stdlib=libc++"
-    )
-endif()
+find_package( Boost 1.65 COMPONENTS system REQUIRED )
 
-include_directories(
-    ${BITWYRE_SOURCE_DIR}/include
-    ${uv_SOURCE_DIR}/include
-    ${http_parser_SOURCE_DIR}
+include_directories( 
+		${Boost_INCLUDE_DIR}
+		${BITWYRE_SOURCE_DIR}/include/
+		${uv_SOURCE_DIR}/include
+    	${http_parser_SOURCE_DIR}
 )
+
+link_directories(${Boost_LIBRARY_DIR})
+
+# Adding all sources
+file(GLOB SOURCES "src/*.cpp")
+
+#Generate the shared library from the sources
+#add_library(exchange SHARED ${SOURCES})
+
+add_executable (exchange ${SOURCES})
 
 add_executable(
-    http_gateway
-    ${BITWYRE_SOURCE_DIR}/src/http/gateway.cpp
+    backend
+    ${BITWYRE_SOURCE_DIR}/src/ordermatch/ordermatch.cpp
 )
 
-add_executable(
-    design
-    ${BITWYRE_SOURCE_DIR}/src/book/types.cpp
-    ${BITWYRE_SOURCE_DIR}/src/book/depth_level.cpp
-    ${BITWYRE_SOURCE_DIR}/src/model/order.cpp
-    ${BITWYRE_SOURCE_DIR}/test/design.cpp
-)
+TARGET_LINK_LIBRARIES(exchange LINK_PUBLIC ${Boost_LIBRARIES})
 
-if (${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")  
-    target_link_libraries( 
-        design
-        cxxrt
-        c++
-    )
-
-    target_link_libraries(
-        http_gateway
-        uv
-        http_parser
-        cxxrt
-        c++
-    )
-endif()
-
-if (${CMAKE_SYSTEM_NAME} STREQUAL "Darwin") 
-    target_link_libraries(
-        http_gateway
-        uv
-        http_parser
-    )
-endif()
+install(TARGETS exchange DESTINATION /usr/local/bin)

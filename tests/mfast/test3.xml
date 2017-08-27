@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<templates xmlns="http://www.ociweb.com/ns/mfast/td/1.2"
+  xmlns:mfast="http://www.ociweb.com/ns/mfast/td/1.2"
+  templateNs="http://www.ociweb.com/ns/templates/mfast_json"
+  ns="http://www.ociweb.com/ns/mfast">
+
+  <define name="mfast:tag">
+    <enum>
+      <element name="JSON_UNKNOWN" value="1" />
+      <element name="JSON_IGNORE" value="2" />
+    </enum>
+  </define>
+
+    <template name="Stock">
+        <uInt32 name="warehouse" />
+        <uInt32 name="retail" />
+    </template>
+
+    <template name="Product" >
+        <uInt32 name="id" presence="optional"/>
+        <string name="name" />
+        <decimal name="price">
+          <delta value="0" />
+        </decimal>
+        <sequence name="tags" presence="optional"  mfast:tag="JSON_IGNORE">
+            <string  />
+        </sequence>
+        <group name="stock" presence="optional">
+            <templateRef name="Stock" />
+        </group>
+        <sequence name="resalers" presence="optional">
+            <string  name="name"/>
+        </sequence>
+
+        <byteVector name="ext" mfast:tag="JSON_UNKNOWN"/>
+    </template>
+
+    <template name="LoginAccount">
+        <string name="userName" />
+        <string name="password" presence="optional" />
+    </template>
+
+    <template name="BankAccount">
+        <uInt64 name="number" />
+        <uInt64 name="routingNumber" />
+        <string name="bank" presence="optional"/>
+        <string name="alias" presence="optional"/>
+    </template>
+
+    <template name="Person" >
+        <string name="firstName" />
+        <string name="lastName" />
+        <uInt32 name="age" />
+        <group name="address" presence="optional">
+            <string name="streeAddress" />
+            <string name="city" />
+            <string name="state" />
+            <uInt32 name="postalCode" />
+        </group>
+        <sequence name="phoneNumbers">
+            <string name="type" />
+            <string name="number" />
+        </sequence>
+        <sequence name="emails">
+            <string />
+        </sequence>
+        <group name="login" presence="optional">
+            <templateRef />
+        </group>
+        <sequence name="bankAccounts" presence="optional">
+            <templateRef />
+        </sequence>
+    </template>
+
+    <template name="SeqTemplate1">
+      <sequence name="seq1">
+        <int32 name="field1" />
+        <int32 name="field2" />
+      </sequence>
+    </template>
+
+    <template name="SeqTemplate2">
+      <sequence name="seq2">
+        <templateRef name="BankAccount" />
+      </sequence>
+    </template>
+
+    <template name="UsingSeqTemplates">
+      <string name="string_field"/>
+      <templateRef name="SeqTemplate1"/>
+      <templateRef name="SeqTemplate2"/>
+    </template>
+</templates>
+

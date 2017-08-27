@@ -1,0 +1,3 @@
+PostgreSQLStoreTestCase.lo: PostgreSQLStoreTestCase.cpp ../../../config.h
+
+../../../config.h:

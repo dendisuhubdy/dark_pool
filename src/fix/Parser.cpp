@@ -1,5 +1,5 @@
 /****************************************************************************
-** Copyright (c) quickfixengine.org  All rights reserved.
+** Copyright (c) 2001-2014
 **
 ** This file is part of the QuickFIX FIX Engine
 **
@@ -22,7 +22,6 @@
 #else
 #include "config.h"
 #endif
-#include "CallStack.h"
 
 #include "Parser.h"
 #include "Utility.h"
@@ -34,8 +33,7 @@ namespace FIX
 bool Parser::extractLength( int& length, std::string::size_type& pos,
                             const std::string& buffer )
 throw( MessageParseError )
-{ QF_STACK_PUSH(Parser::extractLength)
-
+{
   if( !buffer.size() ) return false;
 
   std::string::size_type startPos = buffer.find( "\0019=", 0 );
@@ -56,14 +54,11 @@ throw( MessageParseError )
 
   pos = endPos + 1;
   return true;
-
-  QF_STACK_POP
 }
 
 bool Parser::readFixMessage( std::string& str )
 throw( MessageParseError )
-{ QF_STACK_PUSH(Parser::readFixMessage)
-
+{
   std::string::size_type pos = 0;
 
   if( m_buffer.length() < 2 ) return false;
@@ -88,7 +83,7 @@ throw( MessageParseError )
       if( pos == std::string::npos ) return false;
       pos += 1;
 
-      str = m_buffer.substr( 0, pos );
+      str.assign( m_buffer, 0, pos );
       m_buffer.erase( 0, pos );
       return true;
     }
@@ -104,7 +99,5 @@ throw( MessageParseError )
   }
 
   return false;
-
-  QF_STACK_POP
 }
 }

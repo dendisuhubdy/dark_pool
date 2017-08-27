@@ -1,5 +1,5 @@
 /****************************************************************************
-** Copyright (c) quickfixengine.org  All rights reserved.
+** Copyright (c) 2001-2014
 **
 ** This file is part of the QuickFIX FIX Engine
 **
@@ -22,7 +22,6 @@
 #else
 #include "config.h"
 #endif
-#include "CallStack.h"
 
 #include "DataDictionaryProvider.h"
 #include "Fields.h"
@@ -36,37 +35,37 @@ DataDictionaryProvider::DataDictionaryProvider( const DataDictionaryProvider& co
 }
 
 const DataDictionary& DataDictionaryProvider::getSessionDataDictionary
-(const BeginString& beginString) throw( DataDictionaryNotFound )
+(const BeginString& beginString) const throw( DataDictionaryNotFound )
 {
-  std::map<std::string, DataDictionary>::iterator find =
+  std::map<std::string, ptr::shared_ptr<DataDictionary> >::const_iterator find =
     m_transportDictionaries.find(beginString);
   if( find != m_transportDictionaries.end() )
-    return find->second;
+    return *find->second;
   
   return emptyDataDictionary;
 }
 
 const DataDictionary& DataDictionaryProvider::getApplicationDataDictionary
-(const ApplVerID& applVerID) throw( DataDictionaryNotFound )
+(const ApplVerID& applVerID) const throw( DataDictionaryNotFound )
 {
-  std::map<std::string, DataDictionary>::iterator find =
+  std::map<std::string, ptr::shared_ptr<DataDictionary> >::const_iterator find =
     m_applicationDictionaries.find(applVerID);
   if( find != m_applicationDictionaries.end() )
-    return find->second;
+    return *find->second;
 
   return emptyDataDictionary;
 }
 
 void DataDictionaryProvider::addTransportDataDictionary
-(const BeginString& beginString, const DataDictionary& dd)
+(const BeginString& beginString, ptr::shared_ptr<DataDictionary> pDD)
 {
-  m_transportDictionaries[beginString.getValue()] = dd;
+  m_transportDictionaries[beginString.getValue()] = pDD;
 }
 
 void DataDictionaryProvider::addApplicationDataDictionary
-(const ApplVerID applVerID, const DataDictionary& dd)
+(const ApplVerID& applVerID, ptr::shared_ptr<DataDictionary> pDD)
 {
-  m_applicationDictionaries[applVerID.getValue()] = dd;
+  m_applicationDictionaries[applVerID.getValue()] = pDD;
 }
 }
 

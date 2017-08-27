@@ -1,5 +1,5 @@
 /****************************************************************************
-** Copyright (c) quickfixengine.org  All rights reserved.
+** Copyright (c) 2001-2014
 **
 ** This file is part of the QuickFIX FIX Engine
 **
@@ -22,51 +22,43 @@
 #else
 #include "config.h"
 #endif
-#include "CallStack.h"
 
 #include "Group.h"
 
 namespace FIX
 {
-void Group::addGroup( Group& group )
-{ QF_STACK_PUSH(Group::addGroup)
+void Group::addGroup( const Group& group )
+{
   FieldMap::addGroup( group.field(), group );
-  QF_STACK_POP
 }
 
-void Group::replaceGroup( unsigned num, FIX::Group& group )
-{ QF_STACK_PUSH(Group::replaceGroup) 
+void Group::replaceGroup( unsigned num, const FIX::Group& group )
+{
   FieldMap::replaceGroup( num, group.field(), group ); 
-  QF_STACK_POP
 }
 
 Group& Group::getGroup( unsigned num, Group& group ) const throw( FieldNotFound )
-{ QF_STACK_PUSH(Group::getGroup)
+{
   return static_cast < Group& > ( FieldMap::getGroup( num, group.field(), group ) );
-  QF_STACK_POP
 }
 
-void Group::removeGroup( unsigned num, Group& group )
-{ QF_STACK_PUSH(Group::removeGroup)
+void Group::removeGroup( unsigned num, const Group& group )
+{
   FieldMap::removeGroup( num, group.field() );
-  QF_STACK_POP
 }
 
-void Group::removeGroup( Group& group )
-{ QF_STACK_PUSH(Group::removeGroup)
+void Group::removeGroup( const Group& group )
+{
   FieldMap::removeGroup( group.field() );
-  QF_STACK_POP
 }
 
-bool Group::hasGroup( unsigned num, Group& group )
-{ QF_STACK_PUSH(Group::hasGroup)
+bool Group::hasGroup( unsigned num, const Group& group )
+{
   return FieldMap::hasGroup( num, group.field() );
-  QF_STACK_POP
 }
 
 bool Group::hasGroup( const Group& group )
-{ QF_STACK_PUSH(Group::hasGroup)
+{
   return FieldMap::hasGroup( group.field() );
-  QF_STACK_POP
 }
 }

@@ -1,0 +1,3 @@
+OdbcStoreTestCase.lo: OdbcStoreTestCase.cpp ../../../config.h
+
+../../../config.h:
