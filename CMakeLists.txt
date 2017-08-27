@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.8.0)
+cmake_minimum_required(VERSION 2.8.0)
 
-project(BITWYRE_EXCHANGE_BACKEND)
+project(BITWYRE)
 
 ADD_SUBDIRECTORY(lib)
 
@@ -21,22 +21,22 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 endif()
 
 include_directories(
-    ${MARKETNODE_SOURCE_DIR}/include
+    ${BITWYRE_SOURCE_DIR}/include
     ${uv_SOURCE_DIR}/include
     ${http_parser_SOURCE_DIR}
 )
 
 add_executable(
     http_gateway
-    ${MARKETNODE_SOURCE_DIR}/src/http/gateway.cpp
+    ${BITWYRE_SOURCE_DIR}/src/http/gateway.cpp
 )
 
 add_executable(
     design
-    ${MARKETNODE_SOURCE_DIR}/src/book/types.cpp
-    ${MARKETNODE_SOURCE_DIR}/src/book/depth_level.cpp
-    ${MARKETNODE_SOURCE_DIR}/src/model/order.cpp
-    ${MARKETNODE_SOURCE_DIR}/test/design.cpp
+    ${BITWYRE_SOURCE_DIR}/src/book/types.cpp
+    ${BITWYRE_SOURCE_DIR}/src/book/depth_level.cpp
+    ${BITWYRE_SOURCE_DIR}/src/model/order.cpp
+    ${BITWYRE_SOURCE_DIR}/test/design.cpp
 )
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")  
