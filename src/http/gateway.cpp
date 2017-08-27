@@ -25,7 +25,7 @@ class WebRouter {
 		}
 };
 
-int main(int argc, char *argv[]) {
+int test(int argc, char *argv[]) {
     market::node::http::http server;
 	WebRouter router;
     if(!server.listen("127.0.0.1", 3000, [&](market::node::http::request& req, market::node::http::response& res) {

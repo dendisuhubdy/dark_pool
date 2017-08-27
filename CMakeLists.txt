@@ -12,26 +12,31 @@ find_package( Boost 1.65 COMPONENTS system REQUIRED )
 
 include_directories( 
 		${Boost_INCLUDE_DIR}
-		${BITWYRE_SOURCE_DIR}/include/
-		${uv_SOURCE_DIR}/include
-    	${http_parser_SOURCE_DIR}
+		${BITWYRE_SOURCE_DIR}/include/quickfix/
 )
 
-link_directories(${Boost_LIBRARY_DIR})
+link_directories(
+    ${Boost_LIBRARY_DIR}
+    ${BITWYRE_SOURCE_DIR}/lib
+)
 
-# Adding all sources
-file(GLOB SOURCES "src/*.cpp")
+set(
+	CMAKE_CXX_LINK_FLAGS 
+)
 
 #Generate the shared library from the sources
 #add_library(exchange SHARED ${SOURCES})
 
-add_executable (exchange ${SOURCES})
-
 add_executable(
-    backend
+    ordermatch
     ${BITWYRE_SOURCE_DIR}/src/ordermatch/ordermatch.cpp
 )
 
-TARGET_LINK_LIBRARIES(exchange LINK_PUBLIC ${Boost_LIBRARIES})
+TARGET_LINK_LIBRARIES(
+    ordermatch 
+    LINK_PUBLIC 
+    ${Boost_LIBRARIES}
+    -lquickfix
+)
 
-install(TARGETS exchange DESTINATION /usr/local/bin)
+install(TARGETS ordermatch DESTINATION /usr/local/bin)
