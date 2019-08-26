@@ -15,11 +15,13 @@ Development is done on MacOS X Sierra 10.12 with FreeBSD 10 as the primary deplo
 
 ## Build instructions
 
-    git clone git://github.com/dendisuhubdy/backend-exchange.git
+    git clone git@github.com:dendisuhubdy/dark_pool.git
     mkdir build
     cd build
     cmake ..
-    make 
+    make -j n
+    
+where n is the number of preferred threads
 
 ## 3rd party components
 
